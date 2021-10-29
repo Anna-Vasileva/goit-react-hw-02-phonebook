@@ -8,16 +8,19 @@ class App extends Component {
   };
   formSubmitData = (data) => {
     // console.log(data);
+    const { contacts } = this.state;
     // data.id = uuidv4();
-    this.setState((prevState) => {
-      // console.log(prevState);
-      const newContacts = prevState.contacts;
-      newContacts.push(data);
-      newContacts[newContacts.length - 1].id = uuidv4();
-      return {
-        contacts: newContacts,
-      };
-    });
+    const newContact = { ...data, id: uuidv4() };
+    this.setState(({ contacts }) => ({ contacts: [...contacts, newContact] }));
+    // console.log(prevState);
+    // return { contacts: [...contacts, data] };
+    // const newContacts = prevState.contacts;
+    // newContacts.push(data);
+    // newContacts[newContacts.length - 1].id = uuidv4();
+    // return {
+    // //   contacts: newContacts,
+    // };
+    // });
     // console.log(this.state);
   };
   render() {
