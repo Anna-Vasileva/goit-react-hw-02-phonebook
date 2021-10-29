@@ -8,7 +8,7 @@ class Form extends Component {
     this.setState({ name: "" });
   };
   handleChange = (event) => {
-    console.log(event.currentTarget.value);
+    // console.log(event.currentTarget.value);
     this.setState({ [event.currentTarget.name]: event.currentTarget.value });
   };
   handleSubmit = (e) => {
@@ -19,6 +19,8 @@ class Form extends Component {
     this.reset();
   };
   render() {
+    const { contacts } = this.props;
+    // console.log(this.props);
     return (
       <>
         <form onSubmit={this.handleSubmit}>
@@ -38,7 +40,12 @@ class Form extends Component {
         </form>
         <h2>Contacts</h2>
         <ul>
-          <li></li>
+          {/* {contacts.map(({ name, id }) => {
+            return <li key={id}>{name}</li>;
+          })} */}
+          {contacts.map(({ name }) => {
+            return <li>{name}</li>;
+          })}
         </ul>
       </>
     );
