@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Form from "./components/Form";
+import { v4 as uuidv4 } from "uuid";
 
 class App extends Component {
   state = {
@@ -7,11 +8,12 @@ class App extends Component {
   };
   formSubmitData = (data) => {
     // console.log(data);
-    // data.id =;
+    // data.id = uuidv4();
     this.setState((prevState) => {
       // console.log(prevState);
       const newContacts = prevState.contacts;
       newContacts.push(data);
+      newContacts[newContacts.length - 1].id = uuidv4();
       return {
         contacts: newContacts,
       };

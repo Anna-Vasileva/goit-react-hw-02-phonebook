@@ -3,6 +3,7 @@ import { Component } from "react";
 class Form extends Component {
   state = {
     name: "",
+    number: "",
   };
   reset = () => {
     this.setState({ name: "" });
@@ -36,16 +37,32 @@ class Form extends Component {
               onChange={this.handleChange}
             />
           </label>
+          <label>
+            Number
+            <input
+              type="tel"
+              name="number"
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+              required
+              value={this.state.number}
+              onChange={this.handleChange}
+            />
+          </label>
           <button type="submit">Add contact</button>
         </form>
         <h2>Contacts</h2>
         <ul>
-          {/* {contacts.map(({ name, id }) => {
-            return <li key={id}>{name}</li>;
-          })} */}
-          {contacts.map(({ name }) => {
-            return <li>{name}</li>;
+          {contacts.map(({ name, number, id }) => {
+            return (
+              <li key={id}>
+                {name}: {number}
+              </li>
+            );
           })}
+          {/* {contacts.map(({ name }) => {
+            return <li>{name}</li>;
+          })} */}
         </ul>
       </>
     );
