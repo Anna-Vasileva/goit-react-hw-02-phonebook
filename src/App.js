@@ -16,11 +16,18 @@ class App extends Component {
     filter: "",
   };
   formSubmitData = (data) => {
+    if (this.checkNewName(data.name)) {
+      alert(`${data.name} is already in contact!`);
+      return;
+    }
     const newContact = { ...data, id: uuidv4() };
     this.setState(({ contacts }) => ({ contacts: [...contacts, newContact] }));
   };
   changeFilter = (e) => {
     this.setState({ filter: e.currentTarget.value });
+  };
+  checkNewName = (name) => {
+    return this.state.contacts.find((el) => el.name.includes(name));
   };
 
   render() {
