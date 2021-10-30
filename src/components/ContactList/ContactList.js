@@ -3,7 +3,7 @@ import s from "./ContactList.module.css";
 
 class ContactList extends Component {
   render() {
-    const { contacts, filter } = this.props;
+    const { contacts, filter, onDelete } = this.props;
     const normalizeFilter = filter.toLowerCase();
     const visibleContacts = contacts.filter((el) =>
       el.name.toLowerCase().includes(normalizeFilter)
@@ -15,6 +15,13 @@ class ContactList extends Component {
           return (
             <li key={id} className={s.item}>
               {name}: {number}
+              <button
+                type="button"
+                onClick={() => onDelete(id)}
+                className={s.btn}
+              >
+                Delete
+              </button>
             </li>
           );
         })}
