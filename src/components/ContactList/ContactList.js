@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import s from "./ContactList.module.css";
 
 class ContactList extends Component {
   render() {
@@ -9,10 +10,10 @@ class ContactList extends Component {
     );
 
     return (
-      <ul>
+      <ul className={s.list}>
         {visibleContacts.map(({ name, number, id }) => {
           return (
-            <li key={id}>
+            <li key={id} className={s.item}>
               {name}: {number}
             </li>
           );

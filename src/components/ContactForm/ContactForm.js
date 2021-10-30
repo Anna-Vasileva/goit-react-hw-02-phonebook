@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
+import s from "./ContactForm.module.css";
 
 class ContactForm extends Component {
   state = {
@@ -19,13 +20,12 @@ class ContactForm extends Component {
     this.reset();
   };
   render() {
-    // const { contacts } = this.props;
     const idName = uuidv4();
     const idNumber = uuidv4();
     return (
       <>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor={idName}>
+        <form onSubmit={this.handleSubmit} className={s.form}>
+          <label htmlFor={idName} className={s.label}>
             Name
             <input
               id={idName}
@@ -36,9 +36,10 @@ class ContactForm extends Component {
               required
               value={this.state.name}
               onChange={this.handleChange}
+              className={s.input}
             />
           </label>
-          <label htmlFor={idNumber}>
+          <label htmlFor={idNumber} className={s.label}>
             Number
             <input
               id={idNumber}
@@ -49,20 +50,13 @@ class ContactForm extends Component {
               required
               value={this.state.number}
               onChange={this.handleChange}
+              className={s.input}
             />
           </label>
-          <button type="submit">Add contact</button>
+          <button type="submit" className={s.btn}>
+            Add contact
+          </button>
         </form>
-        {/* <h2>Contacts</h2>
-        <ul>
-          {contacts.map(({ name, number, id }) => {
-            return (
-              <li key={id}>
-                {name}: {number}
-              </li>
-            );
-          })}
-        </ul> */}
       </>
     );
   }

@@ -1,15 +1,17 @@
 import React, { Component } from "react";
+import s from "./Filter.module.css";
 
 class Filter extends Component {
-  // const {filter, changeFilter} = this.props;
   render() {
+    const { filter, changeFilter } = this.props;
     return (
-      <label>
+      <label className={s.label}>
         Find contacts by name
         <input
           type="text"
-          value={this.props.filter}
-          onChange={this.props.changeFilter}
+          value={filter}
+          onChange={changeFilter}
+          className={s.input}
         ></input>
       </label>
     );
