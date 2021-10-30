@@ -1,33 +1,34 @@
 import { Component } from "react";
+import { v4 as uuidv4 } from "uuid";
 
-class Form extends Component {
+class ContactForm extends Component {
   state = {
     name: "",
     number: "",
   };
   reset = () => {
-    this.setState({ name: "" });
+    this.setState({ name: "", number: "" });
   };
   handleChange = (event) => {
-    // console.log(event.currentTarget.value);
     this.setState({ [event.currentTarget.name]: event.currentTarget.value });
   };
   handleSubmit = (e) => {
     e.preventDefault();
 
-    //   console.log(this.state);
     this.props.onSubmit(this.state);
     this.reset();
   };
   render() {
-    const { contacts } = this.props;
-    // console.log(this.props);
+    // const { contacts } = this.props;
+    const idName = uuidv4();
+    const idNumber = uuidv4();
     return (
       <>
         <form onSubmit={this.handleSubmit}>
-          <label>
+          <label htmlFor={idName}>
             Name
             <input
+              id={idName}
               type="text"
               name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -37,9 +38,10 @@ class Form extends Component {
               onChange={this.handleChange}
             />
           </label>
-          <label>
+          <label htmlFor={idNumber}>
             Number
             <input
+              id={idNumber}
               type="tel"
               name="number"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -51,7 +53,7 @@ class Form extends Component {
           </label>
           <button type="submit">Add contact</button>
         </form>
-        <h2>Contacts</h2>
+        {/* <h2>Contacts</h2>
         <ul>
           {contacts.map(({ name, number, id }) => {
             return (
@@ -60,12 +62,9 @@ class Form extends Component {
               </li>
             );
           })}
-          {/* {contacts.map(({ name }) => {
-            return <li>{name}</li>;
-          })} */}
-        </ul>
+        </ul> */}
       </>
     );
   }
 }
-export default Form;
+export default ContactForm;
