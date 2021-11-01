@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import s from "./ContactList.module.css";
+import ContactListItem from "../ContactListItem";
 
 class ContactList extends Component {
   render() {
@@ -14,14 +15,12 @@ class ContactList extends Component {
         {visibleContacts.map(({ name, number, id }) => {
           return (
             <li key={id} className={s.item}>
-              {name}: {number}
-              <button
-                type="button"
-                onClick={() => onDelete(id)}
-                className={s.btn}
-              >
-                Delete
-              </button>
+              <ContactListItem
+                name={name}
+                number={number}
+                id={id}
+                onDelete={onDelete}
+              />
             </li>
           );
         })}

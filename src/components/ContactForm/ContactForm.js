@@ -20,15 +20,15 @@ class ContactForm extends Component {
     this.reset();
   };
   render() {
-    const idName = uuidv4();
-    const idNumber = uuidv4();
+    // const idName = uuidv4();
+    // const idNumber = uuidv4();
     return (
       <>
         <form onSubmit={this.handleSubmit} className={s.form}>
-          <label htmlFor={idName} className={s.label}>
+          <label className={s.label}>
             Name
             <input
-              id={idName}
+              id={uuidv4()}
               type="text"
               name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -39,10 +39,10 @@ class ContactForm extends Component {
               className={s.input}
             />
           </label>
-          <label htmlFor={idNumber} className={s.label}>
+          <label className={s.label}>
             Number
             <input
-              id={idNumber}
+              id={uuidv4()}
               type="tel"
               name="number"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

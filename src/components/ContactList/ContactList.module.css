@@ -5,15 +5,3 @@
 .item:not(:last-child) {
   margin-bottom: 10px;
 }
-.btn {
-  margin-left: 10px;
-  max-width: 100px;
-  background-color: var(--main-white);
-  text-align: center;
-  border: 1px solid var(--main-grey);
-  border-radius: 10%;
-}
-.btn:active {
-  background-color: var(--main-blue);
-  color: var(--main-white);
-}
