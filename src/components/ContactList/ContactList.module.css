@@ -5,3 +5,6 @@
 .item:not(:last-child) {
   margin-bottom: 10px;
 }
+.item {
+  display: flex;
+}
