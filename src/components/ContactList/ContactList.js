@@ -30,14 +30,14 @@ import PropTypes from "prop-types";
 //   }
 // }
 const ContactList = ({ contacts, filter, onDelete }) => {
-  const normalizeFilter = filter.toLowerCase();
-  const visibleContacts = contacts.filter((el) =>
-    el.name.toLowerCase().includes(normalizeFilter)
-  );
+  // const normalizeFilter = filter.toLowerCase();
+  // const visibleContacts = contacts.filter((el) =>
+  //   el.name.toLowerCase().includes(normalizeFilter)
+  // );
 
   return (
     <ul className={s.list}>
-      {visibleContacts.map(({ name, number, id }) => {
+      {contacts.map(({ name, number, id }) => {
         return (
           <li key={id} className={s.item}>
             <ContactListItem
